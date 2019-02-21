@@ -106,7 +106,7 @@ public class UserController implements Controller {
 #### 非注解的处理器适配器
 - org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter
     
-    要求编写的Handler时间Controller接口
+    要求编写的Handler实现Controller接口
 ```java
     public class UserController implements Controller {
         @Override
@@ -139,9 +139,9 @@ public class UserController2 implements HttpRequestHandler {
     }
 }
 ```
+- 多种处理器适配器可以共存
 #### 非注解的处理器映射器
 - org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping
-- 多种处理器适配器可以共存
 ```xml
     <!-- 配置Handler-->
     <bean name="/user.action" class="com.spring.mvc.controller.UserController"/>
