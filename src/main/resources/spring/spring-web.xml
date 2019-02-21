@@ -9,6 +9,27 @@
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+    <!-- 配置Handler-->
+    <bean name="/user.action" class="com.spring.mvc.controller.UserController"/>
+
+    <!-- 配置处理器映射器
+        将bean的name作为url进行查找，需要在配置Handler时指定beanname（就是url）
+        所有的处理器映射器都实现了HandlerMapping接口
+    -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
+    <!-- 配置处理器适配器
+        所有处理器适配器都实现HandlerAdapter接口
+    -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+    <!-- 配置视图解析器
+        解析jsp解析，默认使用jstl标签，需要引入jstl依赖
+     -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+
+
     <!-- 配置SpringMVC -->
     <!-- 1.开启SpringMVC注解模式 -->
     <!-- 简化配置：
@@ -32,4 +53,6 @@
 
     <!-- 4.扫描web相关的 controller -->
     <context:component-scan base-package="com.spring.mvc.controller"/>
+
+
 </beans>
